@@ -17,7 +17,7 @@ I6=I(2*size(I,1)/3+1:size(I,1),size(I,2)/3+1:2*size(I,2)/3,:);
 
 I7=I(1:size(I,1)/3,2*size(I,2)/3+1:size(I,2),:);
 I8=I(size(I,1)/3+1:2*size(I,1)/3,2*size(I,2)/3+1:size(I,2),:);
-I9=I(2*size(I,1)/3+1:size(I,1),size(I,2)/3+1:2*size(I,2)/3,:);
+I9=I(2*size(I,1)/3+1:size(I,1),2*size(I,2)/3+1:size(I,2),:);
 
 subplot(3,3,1);
 imshow(I1);                                                          %Saving images 
