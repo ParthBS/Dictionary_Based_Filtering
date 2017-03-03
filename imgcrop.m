@@ -1,13 +1,13 @@
-I = imread('lenna.jpg');
-[x1,y1,z1] = size(I);
-disp(x1);
+I = imread('lenna.jpg');                                              %reading given image
+[x1,y1,z1] = size(I);                                                 
+disp(x1);                                                             %displaying sizes
 disp(y1);
 disp(z1);
 
 xno = x1/2;
 yno = y1/3;
 
-I1 = I(1:size(I,1)/3,1:size(I,2)/3,:);
+I1 = I(1:size(I,1)/3,1:size(I,2)/3,:);                                %defining sizes to crop image
 I2=I(size(I,1)/3+1:2*size(I,1)/3,1:size(I,2)/3,:);
 I3=I(2*size(I,1)/3+1:size(I,1),1:size(I,2)/3,:);
 
@@ -20,7 +20,7 @@ I8=I(size(I,1)/3+1:2*size(I,1)/3,2*size(I,2)/3+1:size(I,2),:);
 I9=I(2*size(I,1)/3+1:size(I,1),size(I,2)/3+1:2*size(I,2)/3,:);
 
 subplot(3,3,1);
-imshow(I1);
+imshow(I1);                                                          %Saving images 
 subplot(3,3,2);
 imshow(I4);
 subplot(3,3,3);
