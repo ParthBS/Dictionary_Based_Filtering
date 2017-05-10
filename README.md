@@ -5,7 +5,7 @@ Dictionary Based Filtering
 - Anuj Shah-1401084
 - Aatman Dholakia-1401013
 - Parth Satodiya-1401056
-- Vishal Raiyani-14010
+- Vishal Raiyani-1401094
 
 ## Mentor
 - Dr. Mehul raval 
@@ -35,5 +35,6 @@ pair in dictionary database.
 
 
 ## Conclusion
-
+- This naive approach of creating dictionary and searching it through mse takes O(n^2) complexity which is too expensive when training images are more.
+- There is a tradeoff between perfomance and complexity. More the number of training images better the perfomance but more time complexity and vice versa.
 
