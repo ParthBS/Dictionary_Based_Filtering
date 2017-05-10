@@ -1,0 +1,235 @@
+
+\documentclass[journal]{IEEEtran}
+\usepackage[section]{placeins}
+\usepackage{blindtext}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\ifCLASSINFOpdf
+\else
+\fi
+\hyphenation{Dictionary Based Filtering}
+
+
+\begin{document}
+	%
+	% paper title
+	\title{Dictionary Based Filtering}
+	
+	\author{Aatman Dholakia,~\IEEEmembership{1401013},
+		Parth Satodiya,~\IEEEmembership{1401056},
+		Anuj Shah,~\IEEEmembership{1401084},
+		Vishal Raiyani,~\IEEEmembership{1401094}}
+	
+	
+	
+	
+	% make the title area
+	\maketitle
+	
+	
+	\begin{abstract}
+		%\boldmath
+		Main objective is to denoise image efficiently using previous N x N patches of noisy images and it's filtered images and find nearest patch which compares to the original image from this dictionary and then compare it's complexity and efficiency with classical convolution based filtering. Also we compare efficiency between different image patch sizes.
+		
+	\end{abstract}
+	\begin{IEEEkeywords}
+		Classical convolution, low pass filter, dictionary learning, N x N patches
+	\end{IEEEkeywords}
+	
+	
+	\IEEEpeerreviewmaketitle
+	
+	
+	
+	\section{\textbf{Introduction}}
+    First we take some training images of dimensions M x N and filtered image is obtained by classical convolution. Now we divide this image into patches each of dimensions P x Q  where $P, Q \le M, N$ and store it in the dictionary. In the dictionary the key is noisy part of the image and the value is filtered part of the image. Now test image is taken and divided into patches and corresponding value is obtained by iterating the keys. If key is not found then add this new key - value pair in dictionary database.
+    
+
+	\section{\textbf{Flow chart}}
+    \begin{minipage}{\linewidth}
+		\centering
+		\includegraphics[width = 90mm]{final.png}
+		\captionof{figure}{Flow chart \label{overflow}}
+	\end{minipage} 
+		
+	
+	\section{\textbf{Methodology}}
+	\begin{enumerate}
+	    \item \textbf{Low pass filtering}\\
+	    The most basic of filtering operations is called "low-pass". A low-pass filter, also called a "blurring" or "smoothing" filter, averages out rapid changes in intensity. The simplest low-pass filter just calculates the average of a pixel and all of its eight immediate neighbors. The result replaces the original value of the pixel. The process is repeated for every pixel in the image.\\
+	    Kernel used for low pass filter:\\
+	    \[
+  K=
+  \left[ {\begin{array}{ccccc}
+   1/25 & 1/25 & 1/25 & 1/25 & 1/25\\
+   1/25 & 1/25 & 1/25 & 1/25 & 1/25\\
+   1/25 & 1/25 & 1/25 & 1/25 & 1/25\\
+   1/25 & 1/25 & 1/25 & 1/25 & 1/25\\
+   1/25 & 1/25 & 1/25 & 1/25 & 1/25
+  \end{array} } \right]
+\]
+	    \item \textbf{Classical convolution}\\
+        \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{conv.png}
+    		\captionof{figure}{Linear convolution \label{overflow}}\\
+	    \end{minipage}     	    \\
+	    \item \textbf{Salt and pepper noise reduction}\\
+	    Salt-and-pepper noise is a form of noise sometimes seen on images. It presents itself as sparsely occurring white and black pixels.\\
+	    For reducing either salt noise or pepper noise, but not both, a contraharmonic mean filter can be effective.\\
+	    It is done through low pass filtering.
+	    \item \textbf{K - SVD Decomposition Dictionary Learning}\\
+	    Most existing dictionary
+learning methods consider an over-complete dictionary and
+formulate the learning process as a minimization problem.
+	    K-SVD method learns an over-complete dictionary from an
+input image via solving the following minimization model:
+        \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{eq_1.png}
+    		\captionof{figure}{K - SVD \label{overflow}}
+	    \end{minipage} 
+	    
+
+ where $ gi \subset R_n$ is the collection of image patches after vectorization. $D = [d1, . . . , dk] \subset R^{n x k}$ with $ k > n$ is the unknown over-complete dictionary.\\
+ 
+	
+	
+	\item \textbf{Learned Dictionary}\\
+	The concept of the adaptivity has been exploited
+to design the dictionary specifically optimized for the target image, the so-called dictionary learning. Starting from the set of overlapping image patches collected from the input image, our algorithm for dictionary learning iterates between two sub-problems: sparse coding and dictionary updating. Both works on the principle of heuristic greedy method. The sparse coding is done via orthogonal matching pursuit (OMP).\\
+	    
+    \item \textbf{Image denoising}\\
+    Algorithm can be directly applied on de-noising by taking the noisy image as the input image for training. For computational efficiency the patches for trained image are uniformly selected from the image at random. The patches for denoising are the patches uniformly selected with overlaps.\\
+    
+    \item \textbf{Algorithm for denoising of image}\\
+    \begin{itemize}
+        \item Set of training images are selected. $(\approx 10-20)$
+        \item Each training image is divided into 1024 patches of 8 x 8 pixel each and stored in the dictionary using key - value pair.
+        \item Salt and pepper noise is applied for which threshold is 0.5.
+        \item Low pass filter is applied after above process.
+        \item Dictionary is created for both low pass filtered image and salt and pepper image.
+        \item Now a noisy test image is selected and it is compared with the low pass and salt and pepper dictionary using mse and a filtered image without noise will be obtained.\\
+    \end{itemize}
+    
+    \item \textbf{Methods of Comparing}\\
+    \begin{itemize}
+        \item \textbf{MSE}\\
+        The mean squared error (MSE) of an estimator measures the average of the squares of the errors or deviations$-$that is, the difference between the estimator and what is estimated.\\
+        
+        \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 60mm]{compare_mse.png}
+    	\end{minipage} \\
+        
+        One problem with mean-squared error is that it depends strongly on the image intensity scaling.\\
+        Peak Signal-to-Noise Ratio (PSNR) avoids this problem by scaling the MSE according to the image range:
+        
+            $$PSNR = -10 log_{10}[\frac{MSE}{S^2}]$$
+        
+        Where, S = Max. pixel value.\\
+        
+        \item \textbf{SSIM}\\
+        The structural similarity (SSIM) index is a method for predicting the perceived quality of digital television and cinematic pictures, as well as other kinds of digital images and videos. \\
+        The SSIM value can vary between -1 and 1, where 1 indicates perfect similarity.\\
+        
+        \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 60mm]{compare_ssim.png}
+    	\end{minipage} \\
+    \end{itemize}
+    
+	    
+	\end{enumerate}
+	
+	\section{\textbf{Simulation results}}
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{original_crop}
+    		\captionof{figure}{Original image \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{salt_crop}
+    		\captionof{figure}{Salt and pepper noise \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{lowp_crop}
+    		\captionof{figure}{Lowpass filter \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{dis_crop}
+    		\captionof{figure}{Recovered image using mse - disoriented form \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{final_crop}
+    		\captionof{figure}{Recovered image using mse \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{chart_lenna}
+    		\captionof{figure}{MSE error of lenna test image \label{overflow}}
+	    \end{minipage} 
+	    
+	    \begin{minipage}{\linewidth}
+    		\centering
+    		\includegraphics[width = 70mm]{couple_chart}
+    		\captionof{figure}{MSE error of couple test image \label{overflow}}
+	    \end{minipage} 
+	
+	\section{\textbf{Conclusion}}
+	\begin{itemize}
+	    \item The MSE increases, it is to be implied that the images are less similar.Assume that original image has MSE = 0.
+	    \item K-SVD is better in performance than matching algorithm which compares for each and every image. But the output of two algorithms is almost the same.
+	    \item There is trade-off between performance and complexity. More number of patches implies better performance and more time complexity and vice verse.
+	\end{itemize}
+	
+	\section{\textbf{Future work}}
+	\begin{itemize}
+	    \item Improve the performance of the system which is currently $O(n^2)$
+	    \item At present we are taking only 10 - 20 images as training images. But we can include a large database to improve the accuracy of the system.
+	\end{itemize}
+
+	\begin{thebibliography}{1}
+	\bibitem{IEEEhowto:kopka}
+	“Digital Image Processing”, JAYARAMAN
+	\bibitem{IEEEhowto:kopka}
+	"Median filter", En.wikipedia.org, 2017. [Online]. Available:
+	\bibitem{IEEEhowto:kopka}\url{https://en.wikipedia.org/wiki/Median_filter}. [Accessed: 03- Mar- 2017].\\
+	\bibitem{IEEEhowto:kopka}
+	\url{https://lear.inrialpes.fr/people/mairal/tutorial_iccv09/tuto_part2.pdf, 2017. Web. 6 Mar. 2017.}\\
+	\bibitem{IEEEhowto:kopka}
+	\url{https://pdfs.semanticscholar.org/45b0/676a6b8236cefaaeac0faabea159369fdb65.pdf, 2017. Web. 7 Mar. 2017}\\
+	\bibitem{IEEEhowto:kopka}
+	\url{ http://www.dspguide.com/ch6/2.htm}\\
+	\bibitem{IEEEhowto:kopka}
+	\url{ https://en.wikipedia.org/wiki/Salt-and-pepper_noise}
+	\bibitem{IEEEhowto:kopka}
+	\url{ http://www.bogotobogo.com/Matlab/Matlab_Tutorial_Digital_Image_Processing_6_Filter_Smoothing_Low_Pass_fspecial_filter2.php}
+	\bibitem{IEEEhowto:kopka}
+	\url{ http://www.pyimagesearch.com/2014/09/15/python-compare-two-images/}
+	
+	\end{thebibliography}
+	
+	
+	\ifCLASSOPTIONcaptionsoff
+	\newpage
+	\fi
+	
+\end{document}
+
+
