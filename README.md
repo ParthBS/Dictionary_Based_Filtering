@@ -29,6 +29,9 @@ pair in dictionary database.
 ## Requirements
 - Python 2.7+
 - OpenCV
+- Numpy
+- Image
+- Matplotlib
 
 ## Output
 
