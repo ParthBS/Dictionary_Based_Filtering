@@ -32,6 +32,15 @@ pair in dictionary database.
 
 ## Output
 
+- Final result for optimal values of k
+<break>
+
+<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/lenna_final_1500.png" width="200"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/veg_final_2000.png" width="200"/> 
+
+- MSE results for final results
+
+<break>
+<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/lenna_mse_1500.png" width="200"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/figure_1-1.png" width="200"/> 
 
 
 ## Conclusion
