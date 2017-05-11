@@ -36,17 +36,17 @@ pair in dictionary database.
 ## Output
 
 - Final result for optimal values of k
-<break>
+
 
 <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_final_1500.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_final_1500.png"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/veg_final_2000.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/veg_final_2000.png"/> 
 <br>
 - MSE results for final results
-<break>
+
 
 <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_mse_1500.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_mse_1500.png"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/figure_1-1.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/figure_1-1.png"/> 
 
-<br>
 ## Conclusion
+
 - This naive approach of creating dictionary and searching it through mse takes O(n^2) complexity which is too expensive when training images are more.
 - There is a tradeoff between perfomance and complexity. More the number of training images better the perfomance but more time complexity and vice versa.
 
