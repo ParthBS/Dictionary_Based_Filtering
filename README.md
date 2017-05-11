@@ -24,7 +24,7 @@ the keys. If key is not found then add this new key - value
 pair in dictionary database.
 
 ## Methodology
-<img src = "https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/DSP_Flowchart.png">
+<img src = "https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/DSP_Flowchart.png" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/DSP_Flowchart.png">
     
 ## Requirements
 - Python 2.7+
@@ -38,12 +38,12 @@ pair in dictionary database.
 - Final result for optimal values of k
 <break>
 
-<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/lenna_final_1500.png" width="200"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/veg_final_2000.png" width="200"/> 
+<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_final_1500.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_final_1500.png"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/veg_final_2000.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/veg_final_2000.png"/> 
 
 - MSE results for final results
 <break>
 
-<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/lenna_mse_1500.png" width="200"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/blob/master/Outputs/figure_1-1.png" width="200"/> 
+<img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_mse_1500.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/lenna_mse_1500.png"/> <img src="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/figure_1-1.png" width="200" alt="https://github.com/ParthBS/Dictionary_Based_Filtering/raw/master/Outputs/figure_1-1.png"/> 
 
 
 ## Conclusion
